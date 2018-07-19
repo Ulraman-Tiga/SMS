@@ -23,4 +23,10 @@ public interface UserLogicService {
      * @return
      */
     CheckUserMessage signUp(UserVO userVO);
+
+    /**
+     * 登出
+     * @return
+     */
+    boolean signOut();
 }
