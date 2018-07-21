@@ -35,4 +35,24 @@ public class BillPO {
         this.price = price;
         this.comment = comment;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

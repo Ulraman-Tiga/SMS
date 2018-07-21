@@ -21,6 +21,13 @@ public class BillDataServiceImpl implements BillDataService {
     public boolean createBill(BillPO billPO) {
         String username=billPO.getUsername();
         File billFile=new File(getBillFilePath(username)+billPO.getGameName()+".dat");
+        if(!billFile.exists()){
+            try {
+                billFile.createNewFile();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(billFile));
             bufferedWriter.append(billPO.getGameName());
