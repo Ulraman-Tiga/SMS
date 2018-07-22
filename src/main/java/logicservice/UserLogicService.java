@@ -16,13 +16,13 @@ public interface UserLogicService {
      * @param username 用户名
      * @return
      */
-    CheckUserMessage checkUserName(String username);
+   //CheckUserMessage checkUserName(String username);
 
     /**
      * 注册
      * @return
      */
-    CheckUserMessage signUp(UserVO userVO);
+    void signUp(UserVO userVO);
 
     /**
      * 登出
