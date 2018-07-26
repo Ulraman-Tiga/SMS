@@ -3,17 +3,17 @@ import java.io.*;
 
 import data.FileHelper.NormalFileHelper;
 import logicservice.UserLogicService;
-import util.CheckUserMessage;
+
 import vo.UserVO;
 
 public class UserLogicServiceImpl implements UserLogicService{
 
 	File f=NormalFileHelper.createFileByPath("userinform.txt");
 	@Override
-	public CheckUserMessage logIn(UserVO userVO) {//登录
+	public boolean logIn(UserVO userVO) {//登录
 		// TODO 自动生成的方法存根
 		String userInform=null;
-		boolean flag;
+		boolean flag=true;
 		try {
 			BufferedReader br=new BufferedReader(new FileReader(f));
 			while((userInform=br.readLine())!=null) {
@@ -22,8 +22,9 @@ public class UserLogicServiceImpl implements UserLogicService{
 					flag=true;
 					break;
 					
-				}else
+				}else {
 					flag=false;
+					}
 				
 			}
 			br.close();
@@ -31,7 +32,7 @@ public class UserLogicServiceImpl implements UserLogicService{
 			e.printStackTrace();
 			
 		}
-		return CheckUserMessage.SIGNIN_SUCCESS;
+		return flag;
 		
 	}
 
@@ -44,7 +45,7 @@ public class UserLogicServiceImpl implements UserLogicService{
 			
 			try {
 				BufferedWriter bw=new BufferedWriter(new FileWriter(f,true));
-				bw.write(userVO.getUsername()+" "+userVO.getPassword());
+				bw.write(userVO.getUsername().toString()+" "+userVO.getPassword().toString());
 				bw.newLine();
 				bw.flush();
 				bw.close();

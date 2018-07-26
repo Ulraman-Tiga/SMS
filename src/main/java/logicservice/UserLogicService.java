@@ -9,7 +9,7 @@ public interface UserLogicService {
      * 登录
      * @return
      */
-    CheckUserMessage logIn(UserVO userVO);
+    boolean logIn(UserVO userVO);
 
     /**
      * 检查注册的用户名是否存在
