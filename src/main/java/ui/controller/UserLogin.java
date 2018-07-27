@@ -5,8 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.*;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import ui.Main;
 import vo.UserVO;
 
@@ -18,10 +17,14 @@ public class UserLogin {
 	@FXML
 	private TextField u_pass;
 	
+	public void initialize() {
+		
+	}
 	public void login() {
-		u_name=new TextField();
-		u_pass=new TextField();
-		if(UserLogicServiceFactory.getUserLogicService().logIn(new UserVO(u_name.getText(),u_pass.getText()))==true) {
+		
+		UserVO userinf=new UserVO(u_name.getText(),u_pass.getText());
+
+		if(UserLogicServiceFactory.getUserLogicService().logIn(userinf)==true) {
 			System.out.println("ok");
 		}else {
 			System.out.println("no");

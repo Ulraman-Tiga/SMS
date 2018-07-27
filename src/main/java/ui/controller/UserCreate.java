@@ -21,9 +21,9 @@ public class UserCreate {
 		
 	}
 	public void confirm(ActionEvent event ) {
-		
+		System.out.println(txt1.getText());
 		UserLogicServiceFactory.getUserLogicService().signUp(new UserVO(txt1.getText(),txt2.getText()));
-		System.out.println("sfsf");
+		
 		
 	}
 	public void cancel(ActionEvent event)throws Exception {

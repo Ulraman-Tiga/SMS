@@ -13,24 +13,22 @@ public class UserLogicServiceImpl implements UserLogicService{
 	public boolean logIn(UserVO userVO) {//登录
 		// TODO 自动生成的方法存根
 		String userInform=null;
-		boolean flag=true;
+		boolean flag=false;
+		System.out.println(userVO.getUsername());
+		System.out.println(userVO.getPassword());
 		try {
 			BufferedReader br=new BufferedReader(new FileReader(f));
 			while((userInform=br.readLine())!=null) {
-				String []data=userInform.split(" ");
+				String []data=userInform.split("(\\s)+");
 				if(data[0].equals(userVO.getUsername())&&data[1].equals(userVO.getPassword())) {
 					flag=true;
-					break;
-					
-				}else {
-					flag=false;
-					}
+					break;	
+				}
 				
 			}
 			br.close();
 		}catch(Exception e) {
 			e.printStackTrace();
-			
 		}
 		return flag;
 		
