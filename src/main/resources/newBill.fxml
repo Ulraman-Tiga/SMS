@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.NewBillController">
    <children>
-      <Button fx:id="create_button" layoutX="504.0" layoutY="288.0" mnemonicParsing="false" text="新建" />
-      <Button fx:id="cancel_button" layoutX="504.0" layoutY="335.0" mnemonicParsing="false" text="取消" />
+      <Button fx:id="create_button" layoutX="504.0" layoutY="288.0" mnemonicParsing="false" onAction="#createBill" text="新建" />
+      <Button fx:id="cancel_button" layoutX="504.0" layoutY="335.0" mnemonicParsing="false" onAction="#cancel" text="取消" />
       <Label layoutX="77.0" layoutY="35.0" text="游戏名" />
       <Label layoutX="83.0" layoutY="80.0" text="价格" />
       <Label layoutX="83.0" layoutY="126.0" text="日期" />
