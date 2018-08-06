@@ -12,11 +12,11 @@ import ui.Main;
 import vo.UserVO;
 public class UserCreate {
 	
-	@FXML 
-	private TextField txt1; 
-	@FXML 
+	@FXML
+	private TextField txt1;
+	@FXML
 	private TextField txt2;
-	
+
 	public void initialize() {
 		
 	}
@@ -27,7 +27,7 @@ public class UserCreate {
 		
 	}
 	public void cancel(ActionEvent event)throws Exception {
-		Parent returnmain= FXMLLoader.load(getClass().getResource("../../newUser.fxml"));
+		Parent returnmain= FXMLLoader.load(getClass().getResource("../../Main.fxml"));
 		
         Main.getPrimaryStage().setScene(new Scene(returnmain));
 	}

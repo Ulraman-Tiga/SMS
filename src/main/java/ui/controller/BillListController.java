@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import logicServiceFactory.BillLogicServiceFactory;
 import po.BillPO;
 import ui.Main;
 import ui.util.OneBillItem;
@@ -17,9 +18,20 @@ import vo.BillVO;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.*;
 public class BillListController {
 
+    private static BillListController billListController;
+    public static BillListController getInstance(){
+        return billListController;
+    }
+    public BillListController(){
+        BillListController.billListController=this;
+    }
     @FXML
     private TableView billList;
     @FXML
@@ -29,22 +41,27 @@ public class BillListController {
     @FXML
     private TableColumn<OneBillItem,String>priceColumn;
 
-    public void initBillList(){
+    public static void init(){
         ObservableList<OneBillItem> billVOS=FXCollections.observableArrayList();
-        billVOS.add(new OneBillItem(new SimpleStringProperty("test"),
-                new SimpleStringProperty("0101"),
-                new SimpleStringProperty("123")));
-        gameNameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        billList.setItems(billVOS);
+        //List<BillVO> billVOList= BillLogicServiceFactory.getBillLogicService().getBillList();
+        List<BillVO> billVOList=new ArrayList<>();
+        billVOList.add(new BillVO("test",123,LocalDate.now(),"123"));
+        for(BillVO billVO:billVOList){
+            billVOS.add(new OneBillItem(
+                    new SimpleStringProperty(billVO.getGameName()),
+                    new SimpleStringProperty(billVO.getDate().format(DateTimeFormatter.BASIC_ISO_DATE)),
+                    new SimpleStringProperty(billVO.getPrice()+""))
+            );
+        }
+        BillListController.getInstance().gameNameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+        BillListController.getInstance().dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        BillListController.getInstance().priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        BillListController.getInstance().billList.setItems(billVOS);
     }
+
+
 
     public void createbill() throws IOException{
-        initBillList();
-        Parent newBillPane=FXMLLoader.load(getClass().getResource("../../newBill.fxml"));
-        Main.getPrimaryStage().setScene(new Scene(newBillPane));
-        System.out.println("yeah!");
+        Main.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("../../newBill.fxml"))));
     }
-
 }
