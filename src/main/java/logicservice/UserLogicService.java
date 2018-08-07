@@ -16,7 +16,7 @@ public interface UserLogicService {
      * @param username 用户名
      * @return
      */
-   //CheckUserMessage checkUserName(String username);
+   //String checkUserName(String username);
 
     /**
      * 注册
