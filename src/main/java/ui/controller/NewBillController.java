@@ -50,5 +50,6 @@ public class NewBillController {
 
     public void cancel() throws Exception{
         Main.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("../../billList.fxml"))));
+        BillListController.init();
     }
 }

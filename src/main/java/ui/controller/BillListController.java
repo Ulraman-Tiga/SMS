@@ -43,8 +43,7 @@ public class BillListController {
 
     public static void init(){
         ObservableList<OneBillItem> billVOS=FXCollections.observableArrayList();
-        //List<BillVO> billVOList= BillLogicServiceFactory.getBillLogicService().getBillList();
-        List<BillVO> billVOList=new ArrayList<>();
+        List<BillVO> billVOList= BillLogicServiceFactory.getBillLogicService().getBillList();
         billVOList.add(new BillVO("test",123,LocalDate.now(),"123"));
         for(BillVO billVO:billVOList){
             billVOS.add(new OneBillItem(
