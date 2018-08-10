@@ -27,7 +27,7 @@ public class UserCreate {
 		
 	}
 	public void cancel(ActionEvent event)throws Exception {
-		Parent returnmain= FXMLLoader.load(getClass().getResource("../../Main.fxml"));
+		Parent returnmain= FXMLLoader.load(getClass().getResource("../../Main_user.fxml"));
 		
         Main.getPrimaryStage().setScene(new Scene(returnmain));
 	}
